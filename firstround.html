@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Escape Quest - The Enigma Chamber</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="stylesheet" href="styles.css">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#0a0a5c",
+          "background-light": "#f6f6f8",
+          "background-dark": "#111121",
+        },
+        fontFamily: {
+          "display": ["Space Grotesk"]
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+      },
+    },
+  }
+</script>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="flex flex-col min-h-screen">
+
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-800/50">
+  <nav class="container mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <span class="material-symbols-outlined text-primary text-3xl">key</span>
+      <h1 class="text-xl font-bold text-gray-900 dark:text-white">Escape Quest</h1>
+    </div>
+    <div class="hidden md:flex items-center gap-8">
+      <!-- Home and Rooms now point to the startup page and rooms page -->
+      <a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="startpage.html">Home</a>
+      <a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="rooms.html">Rooms</a>
+      <a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">Leaderboard</a>
+      <a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">About</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="p-2 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+        <span class="material-symbols-outlined">help</span>
+      </button>
+      <div class="w-10 h-10 rounded-full bg-cover bg-center" 
+           style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9e85z0utmauHKq8Qh9NNsshGhaGfgylqGWUxT8cVsk28n8uqJ-ShkOsAVfcVexLB5TC3GvUIDCuXr08V9SzX2xBWwRSP-dfzX0eo40bNa8yDnZXKhqZXwGw1JIp4dF2d6XUcU2tLPJjgjQg3JhTmE-YwygEiqJOvMPt2BagqSRU1QHEoaZe-S0Tw4q5t8LK5dn0luo7V305inl8_rxpJmWS3t6P71zj815w4RD0XWvFxZSGzhYnC3ctkqnMKeUmdk10n-ClFxJA");'>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="flex-grow container mx-auto px-6 py-12 flex items-center justify-center">
+  <div class="w-full max-w-4xl flex flex-col items-center">
+    <div class="w-full h-96 rounded-xl bg-hero-firstround shadow-lg">
+      <div class="w-full h-full bg-black/30 rounded-xl"></div>
+    </div>
+
+    <div class="text-center mt-8 px-4">
+      <h2 class="text-4xl font-bold text-gray-900 dark:text-white tracking-tight">The Enigma Chamber</h2>
+      <p class="mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-400">
+        Welcome, adventurer! Your journey begins here. Solve the riddle to unlock the door and proceed to the next challenge.
+      </p>
+      <p class="mt-6 text-xl italic font-medium text-gray-700 dark:text-gray-300">
+        "I have cities, but no houses; forests, but no trees; and water, but no fish. What am I?"
+      </p>
+    </div>
+
+    <div class="mt-8 w-full max-w-md">
+      <div class="flex flex-col sm:flex-row items-center gap-4">
+        <label class="sr-only" for="answer-input">Your Answer</label>
+        <input id="answer-input" 
+               class="form-input flex-grow w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-black/20 border-2 border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400" 
+               placeholder="Enter your answer..." type="text"/>
+        <button id="submit-btn"
+                class="w-full sm:w-auto flex-shrink-0 bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/50 transition-all shadow-lg">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+
+<!-- ✅ Interaction Script -->
+<script>
+  const correctAnswer = "map";
+  const input = document.getElementById("answer-input");
+  const button = document.getElementById("submit-btn");
+
+  button.addEventListener("click", () => {
+    const userAnswer = input.value.trim().toLowerCase();
+    if (userAnswer === correctAnswer) {
+      // mark room1 completed so Rooms page can unlock room 2
+      try {
+        localStorage.setItem("room1Completed", "true");
+      } catch (e) {
+        console.warn("Could not write to localStorage:", e);
+      }
+      alert("✅ Correct! Proceeding to Round 2...");
+      window.location.href = "secondround.html";
+    } else {
+      alert("❌ Incorrect answer. Try again!");
+    }
+  });
+</script>
+
+</body>
+</html>

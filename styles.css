@@ -1,0 +1,128 @@
+/* styles.css - shared for all pages */
+
+/* ---- Fonts (the pages already include Google Fonts link in head) ---- */
+
+/* ---- Color variables ---- */
+:root{
+  --primary: #0a0a5c;
+  --primary-2: #400a76;
+  --bg-light: #f6f6f8;
+  --bg-dark: #111121;
+  --card-alpha: rgba(255,255,255,0.8);
+  --card-alpha-dark: rgba(17,17,33,0.6);
+  --glass-blur: 8px;
+  --rounded-xl: 0.75rem;
+}
+
+/* ---- Base helpers ---- */
+body{
+  font-family: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* keep background classes to match tailwind's dark-mode classes (pages already use `class="dark"`) */
+.bg-background-light {
+  background-color: var(--bg-light);
+}
+.bg-background-dark {
+  background-color: var(--bg-dark);
+}
+
+/* card container used across pages */
+.card-root{
+  background: var(--card-alpha);
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--rounded-xl);
+  padding: 2.25rem; /* 36px */
+  box-shadow: 0 12px 30px rgba(10,10,60,0.12);
+}
+
+/* dark variant (apply when page has dark class on <html>) */
+.dark .card-root{
+  background: var(--card-alpha-dark);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+/* primary button */
+.btn-primary{
+  background-color: var(--primary);
+  color: white;
+  padding: .7rem 1.4rem;
+  border-radius: .6rem;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(10,10,60,0.12);
+  transition: transform .14s ease, background-color .14s ease;
+}
+.btn-primary:hover{ transform: translateY(-2px); }
+.btn-primary:active{ transform: translateY(0); }
+
+/* secondary light button (used for disabled/locked state) */
+.btn-ghost{
+  background: rgba(0,0,0,0.06);
+  color: #222;
+  padding: .6rem 1rem;
+  border-radius: .6rem;
+  font-weight:700;
+}
+
+/* rounded card style for Room boxes */
+.room-box{
+  border-radius: .9rem;
+  padding: 1.1rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+  transition: transform .16s ease, box-shadow .16s ease;
+  cursor: pointer;
+}
+.room-box:hover{ transform: translateY(-6px); box-shadow: 0 18px 50px rgba(10,10,60,0.08); }
+
+/* locked overlay for room2 */
+.locked-overlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .9rem;
+  background: rgba(255,255,255,0.65);
+  text-align:center;
+  padding: 1rem;
+}
+
+/* small helper to center horizontally */
+.center-x{ display:flex; justify-content:center; align-items:center; }
+
+/* ---- Background images for pages ----
+   Put the image URLs here to replace inline attributes.
+   (If you prefer, you can keep the inline style; these classes avoid duplication)
+*/
+.bg-startup{
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7xCRSRau4caRt4UJMsqYC_JjtDvL7GyLN5p2lpREJVqR7klsWFMSYUcNUNbi3-Xh92_qQHK0SQsIR2am3HGCYxp0UzPvS1uiHQCc6bh7q-i-9s74Z_DEmVc4G6IFYVZOZEnQ9JezX5yRvKMjVvqTjVWajTtVqI8GyIxz0pmKE89DUjbqQf5gStmCY8wb50MOIYxx3JOf81-tn_Bg4lfkwjrUklkvGGytJ4PB26-1ryqpUYKVbFFzC1i1BomoJgstH3j6p8i-Zow');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* hero images for the rounds (replace inline styles) */
+.bg-hero-firstround{
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAu3vihEU-li5RtT8UD7lbGHlNL2OZaHdFEJRvZVmMuBhHrEzj5t2tCQ25ZMmQ7xKffNsy5ijjF4PxVPBFeMdEZ8hn0fQHg7YfkRTrl0Bym8ar0tfZoZAD64HQjjhPmEoeVAQKwGQrOHNoETxMlkWqikj19y43GBYpYxgBl7NtfMEEofJwoKe6hN7yEs96DyPKEhuu4o5DtMUAKyDWY7tGEjwn6OsOuV5pTB3FcvKl54FAnOOxoFyl2s3DtX1d5oxJ-FHYV7Xon-Q');
+  background-size: cover;
+  background-position:center;
+  min-height: 20rem;
+}
+
+/* second round hero */
+.bg-hero-secondround{
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPFmC8tya3fvBHSCXVq0zPbnpWN89qpJ3ABxqvuTAYbRJqOrbEvJ-DRKbqd0FCTGTrlCuTpL3RjNMjd8MVygByE__ENjQLSE0e0CSV3nG6nTmVcnr9hMqiE7Hd9kYZTLKpRRcI4GIauzfJrnHn9pY0uRD27RJB00EU6_NwLr8jlkYtFxwvwMHocwREj5MqTT_fSyzwDJ_OL7OU7b33mL8wmop9mgiZvWLzgnUef_zEXCNZkkxKiQ8xuQpRyz9QbW0FA0eB2av9rw');
+  background-size: cover;
+  background-position:center;
+  min-height: 20rem;
+}
+
+/* small utilities */
+.mt-6{ margin-top:1.5rem; }
+.p-6{ padding:1.5rem; }
+
+/* override any inline aspect-w containers from tailwind if used */
+.aspect-w-16{ width:100%; height:auto; }

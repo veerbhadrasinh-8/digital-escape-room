@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooms - Escape Quest</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#0a0a5c",
+            "background-light": "#f6f6f8",
+            "background-dark": "#111121",
+          },
+          fontFamily: { display: ["Space Grotesk"] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100">
+  <div class="min-h-screen flex flex-col items-center p-6">
+    <header class="w-full max-w-6xl">
+      <nav class="flex items-center justify-between px-4 py-3">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary text-3xl">key</span>
+          <h1 class="text-lg font-bold">Escape Quest — Rooms</h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <a class="text-sm hover:text-primary" href="startpage.html">Home</a>
+          <a class="text-sm font-medium text-primary" href="rooms.html">Rooms</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="w-full max-w-4xl mt-8">
+      <h2 class="text-2xl font-bold text-center mb-6">Choose a Room</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <!-- Room 1 -->
+        <div id="box1" class="cursor-pointer rounded-xl p-6 bg-white/80 dark:bg-background-dark/60 border border-gray-200/30 shadow hover:scale-102 transition transform" role="button" tabindex="0">
+          <h3 class="text-xl font-bold">Box 1 — Room 1</h3>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Begin your journey here. Click to enter Room 1.</p>
+          <div class="mt-4">
+            <button class="enter1 w-full bg-primary text-white py-2 rounded-md font-bold">Enter Room 1</button>
+          </div>
+        </div>
+
+        <!-- Room 2 (locked until room1Completed) -->
+        <div id="box2" class="rounded-xl p-6 bg-white/80 dark:bg-background-dark/60 border border-gray-200/30 shadow relative">
+          <h3 class="text-xl font-bold">Box 2 — Room 2</h3>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Locked. Complete Room 1 to unlock.</p>
+          <div class="mt-4">
+            <button id="enter2" class="w-full py-2 rounded-md font-bold">Enter Room 2</button>
+          </div>
+          <div id="lockedOverlay" class="absolute inset-0 bg-white/60 dark:bg-black/60 flex items-center justify-center rounded-xl" style="display:none;">
+            <div class="text-center">
+              <p class="font-semibold text-gray-700 dark:text-gray-200">Locked</p>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Complete Room 1 to unlock this room.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+        Tip: You can also progress by solving the rooms directly from the map flow.
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Hook up buttons
+    document.querySelector(".enter1").addEventListener("click", () => {
+      window.location.href = "firstround.html";
+    });
+
+    const enter2 = document.getElementById("enter2");
+    const lockedOverlay = document.getElementById("lockedOverlay");
+
+    function updateLockState() {
+      const room1Done = localStorage.getItem("room1Completed") === "true";
+      if (room1Done) {
+        // unlocked
+        lockedOverlay.style.display = "none";
+        enter2.classList.remove("bg-gray-400");
+        enter2.classList.add("bg-primary", "text-white");
+        enter2.addEventListener("click", () => {
+          window.location.href = "secondround.html";
+        });
+      } else {
+        // locked
+        lockedOverlay.style.display = "flex";
+        enter2.classList.remove("bg-primary", "text-white");
+        enter2.classList.add("bg-gray-400", "text-white");
+        enter2.addEventListener("click", () => {
+          alert("🔒 Room 2 is locked. Complete Room 1 first!");
+        });
+      }
+    }
+
+    // initialize
+    updateLockState();
+  </script>
+</body>
+</html>
