@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f4d125",
+              "background-light": "#f8f8f5",
+              "background-dark": "#221f10",
+            },
+            fontFamily: {
+              display: ["Space Grotesk"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+      body {
+        font-family: "Space Grotesk", sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex min-h-screen items-center justify-center p-4">
+<div class="w-full max-w-2xl rounded-xl bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-8 text-center shadow-2xl shadow-primary/20">
+<div class="mb-6">
+<span aria-label="Trophy" class="text-6xl" role="img">🏆</span>
+</div>
+<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">Congratulations! You've Escaped!</h1>
+<p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          You've successfully navigated all the challenges and unlocked the final door. Your wit and determination have led you to victory. Well done!
+        </p>
+<div class="aspect-w-16 aspect-h-9 mb-8 overflow-hidden rounded-lg">
+<img alt="A celebratory image showing an open door with light streaming out." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBitwpeYybRWqGW_CWWWaxSRq7wqZdq4CDyeYoaPVcgTUsLI3V9akcW2Bf5GOoa1NxbqA7PX73_P0tIdeeA0gS185tl46nLHsnv5HPChgIg07nxO8pZ7dTE32_GfyFHbOI1HUfuu1uITc9u72-zl7GNhzZxrsyjYfyt-e53W3A1HpcehW2NMq_bJowOHZ2PZXojQ3q60PNb9bGo-3KBoyyODOhEiFr6oljEdho4eOgOOtINCHcwII-5LelvDkrF7BYIyaiImiRWZw"/>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button id="playAgainBtn" class="w-full sm:w-auto flex-1 bg-primary text-background-dark font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors duration-300">
+            Play Again
+</button>
+</div>
+</div>
+</div>
+
+<script>
+  // When Play Again is clicked: clear progress and go to startup page
+  document.getElementById("playAgainBtn").addEventListener("click", () => {
+    // Clear room progress so user can replay from start
+    localStorage.removeItem("room1Completed");
+    localStorage.removeItem("room2Completed");
+    // Redirect to your start page (matches filename you shared)
+    window.location.href = "startpage.html";
+  });
+</script>
+
+</body>
+</html>

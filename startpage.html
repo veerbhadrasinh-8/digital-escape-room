@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Enigma Forest</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#0a0a5c",
+            "background-light": "#f6f6f8",
+            "background-dark": "#111121",
+          },
+          fontFamily: { display: ["Space Grotesk"] },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100">
+  <div class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7xCRSRau4caRt4UJMsqYC_JjtDvL7GyLN5p2lpREJVqR7klsWFMSYUcNUNbi3-Xh92_qQHK0SQsIR2am3HGCYxp0UzPvS1uiHQCc6bh7q-i-9s74Z_DEmVc4G6IFYVZOZEnQ9JezX5yRvKMjVvqTjVWajTtVqI8GyIxz0pmKE89DUjbqQf5gStmCY8wb50MOIYxx3JOf81-tn_Bg4lfkwjrUklkvGGytJ4PB26-1ryqpUYKVbFFzC1i1BomoJgstH3j6p8i-Zow');"></div>
+    <div class="relative z-10 bg-background-light/80 dark:bg-background-dark/80 p-10 rounded-xl shadow-lg backdrop-blur-md">
+      <h1 class="text-4xl font-bold mb-4">🌲 The Enigma Forest 🌲</h1>
+      <p class="mb-8 max-w-lg">
+        Welcome, adventurer! Embark on a journey through the Enigma Forest,
+        where ancient secrets and challenging puzzles await.
+      </p>
+      <button id="startGame"
+        class="bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-all shadow-lg">
+        Start Game
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("startGame").addEventListener("click", () => {
+      window.location.href = "firstround.html";
+    });
+  </script>
+</body>
+</html>
