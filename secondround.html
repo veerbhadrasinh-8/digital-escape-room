@@ -1,130 +1,224 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Stitch Design</title>
-<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#400a76",
-              "background-light": "#f7f6f8",
-              "background-dark": "#191022",
-            },
-            fontFamily: {
-              display: ["Space Grotesk"],
-            },
-            borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
-          },
-        },
-      };
-    </script>
-</head>
-<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
-<div class="flex min-h-screen w-full flex-col">
-<header class="sticky top-0 z-10 border-b border-gray-200/10 dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
-<div class="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-<div class="flex items-center gap-4">
-<div class="text-primary size-7">
-<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" stroke="currentColor" stroke-linejoin="round" stroke-width="4"></path>
-</svg>
-</div>
-<h2 class="text-lg font-bold text-gray-900 dark:text-white">Escape Quest</h2>
-</div>
-<nav class="hidden items-center gap-8 md:flex">
-  <a class="text-sm font-medium hover:text-primary transition-colors" href="startpage.html">Home</a>
-  <a class="text-sm font-medium hover:text-primary transition-colors" href="rooms.html">Rooms</a>
-  <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Leaderboard</a>
-  <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Help</a>
-</nav>
-<div class="flex items-center gap-4">
-<div class="relative h-10 w-10">
-<img alt="User Avatar" class="h-full w-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArPfRmb2RZEVuratEudfywAxX7PtxDyYfpTBIBOIBW65yZLp0ocZgjoO6hNIQdbl30Vv4s3AEoIXdVes0-skKn3o-QGwqf2kOQoPKO4BQTRGKTbJjNCDll-0nE8PMK_c5VoiGd5gb-IuEQwsIU-h29X-1RUHzFewZCRCFcGcmYyTUnjY4ATLwI2mgovrnPqcappIjfu7itPyTyRzsBYUtnZ9rxhTUqLh7hxz9lczMWaCnFWHZQZVMRTeq5HL5eeGj06JBkdkR12Q"/>
-<span class="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-green-500 ring-2 ring-background-light dark:ring-background-dark"></span>
-</div>
-<button class="md:hidden">
-<span class="material-symbols-outlined text-gray-800 dark:text-gray-200"> menu </span>
-</button>
-</div>
-</div>
-</header>
-<main class="flex-1">
-<div class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-<div class="mx-auto max-w-4xl">
-<div class="mb-8 overflow-hidden rounded-xl shadow-lg">
-<div class="bg-hero-secondround min-h-80 w-full"></div>
-</div>
-<div class="text-center">
-<h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">The Enigma Chamber</h1>
-<p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
-                Welcome, adventurer. Secrets are etched in stone and riddles guard the path. Solve them to unlock the next chapter of your quest.
-              </p>
-</div>
-<div class="mt-12 space-y-8">
-<div class="rounded-lg border border-gray-200/20 dark:border-white/10 bg-background-light/50 dark:bg-background-dark/50 p-6">
-<h3 class="text-xl font-bold text-gray-900 dark:text-white">The Riddles</h3>
-<div class="mt-4 space-y-4 text-gray-700 dark:text-gray-300">
-<p>1. I have cities, but no houses; forests, but no trees; and water, but no fish. What am I?</p>
-<p>2. What has an eye, but cannot see?</p>
-<p>3. What is always in front of you but can't be seen?</p>
-</div>
-</div>
-<div class="rounded-lg border border-gray-200/20 dark:border-white/10 bg-background-light/50 dark:bg-background-dark/50 p-6">
-<h3 class="text-xl font-bold text-gray-900 dark:text-white">Your Answer</h3>
-<div class="mt-4">
-<form id="riddleForm" class="flex flex-col items-center gap-4 sm:flex-row">
-<div class="w-full sm:flex-1">
-<label class="sr-only" for="solution">Enter your solutions here</label>
-<input class="form-input w-full rounded-lg border-gray-300 bg-background-light/50 dark:border-white/20 dark:bg-background-dark/50 px-4 py-3 text-base text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:border-primary focus:ring-primary" id="solution" name="solution" placeholder="Type your comma-separated answers..." type="text"/>
-</div>
-<button id="submitSolutions" class="flex w-full items-center justify-center rounded-lg bg-primary px-6 py-3 text-base font-bold text-white shadow-md transition-transform duration-200 hover:scale-105 sm:w-auto" type="submit">
-<span>Submit Solutions</span>
-<span class="material-symbols-outlined ml-2"> lock_open </span>
-</button>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
-
-<!-- ✅ Added Interactive Script -->
-<script>
-  const form = document.getElementById("riddleForm");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    
-    const input = document.getElementById("solution").value.trim().toLowerCase();
-    const userAnswers = input.split(",").map(a => a.trim());
-    const correctAnswers = ["map", "needle", "future"];
-
-    // check if all answers match
-    if (JSON.stringify(userAnswers) === JSON.stringify(correctAnswers)) {
-      try {
-        localStorage.setItem("room2Completed", "true");
-      } catch (e) {
-        console.warn("Could not write to localStorage:", e);
-      }
-      alert("✅ Excellent! You solved all riddles!");
-      window.location.href = "successpage.html";
-    } else {
-      alert("❌ Some answers are incorrect. Try again!");
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Escape Quest - Room 2: The Enigma Chamber</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #008080;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px 8px 36px 8px;
     }
-  });
-</script>
+  </style>
+</head>
+<body>
+
+  <!-- Main application window -->
+  <div class="win-window" style="width: 580px; max-width: 98vw;">
+
+    <!-- Title bar -->
+    <div class="win-titlebar">
+      <div class="win-titlebar-title">
+        <div class="win-titlebar-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="8" r="6" fill="#400a76" stroke="#c0a0ff" stroke-width="1"/>
+            <text x="8" y="12" text-anchor="middle" font-size="9" fill="#fff" font-family="Tahoma">!!!</text>
+          </svg>
+        </div>
+        Escape Quest — Room 2: The Enigma Chamber
+      </div>
+      <div class="win-titlebar-controls">
+        <button class="win-ctrl-btn" title="Minimize">_</button>
+        <button class="win-ctrl-btn" title="Maximize">□</button>
+        <button class="win-ctrl-btn" title="Close" style="font-family:Arial; font-weight:bold; font-size:10px;">✕</button>
+      </div>
+    </div>
+
+    <!-- Menu bar -->
+    <div class="win-menubar">
+      <a href="startpage.html">File</a>
+      <a href="#">Game</a>
+      <a href="rooms.html">Rooms</a>
+      <a href="#">Leaderboard</a>
+      <a href="#">Help</a>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="win-toolbar">
+      <button class="win-toolbar-btn" onclick="window.location.href='startpage.html'">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8h2v6h4v-4h2v4h4V8h2L8 1z" fill="#0a246a"/></svg>
+        Home
+      </button>
+      <div class="win-toolbar-sep"></div>
+      <button class="win-toolbar-btn" onclick="window.location.href='rooms.html'">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="6" height="6" fill="#f0c040" stroke="#a07000"/><rect x="9" y="1" width="6" height="6" fill="#a6caf0" stroke="#0a246a"/><rect x="1" y="9" width="6" height="6" fill="#90EE90" stroke="#006400"/><rect x="9" y="9" width="6" height="6" fill="#ffb0b0" stroke="#a00000"/></svg>
+        Rooms
+      </button>
+      <div class="win-toolbar-sep"></div>
+      <span class="text-win-sm" style="margin-left:4px; color:#666;">Room 2 of 2</span>
+    </div>
+
+    <!-- Client area -->
+    <div class="win-client" style="padding: 12px;">
+
+      <!-- Hero image -->
+      <div class="win-panel-inset" style="padding:0; margin-bottom:10px; overflow:hidden; height:160px;">
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPFmC8tya3fvBHSCXVq0zPbnpWN89qpJ3ABxqvuTAYbRJqOrbEvJ-DRKbqd0FCTGTrlCuTpL3RjNMjd8MVygByE__ENjQLSE0e0CSV3nG6nTmVcnr9hMqiE7Hd9kYZTLKpRRcI4GIauzfJrnHn9pY0uRD27RJB00EU6_NwLr8jlkYtFxwvwMHocwREj5MqTT_fSyzwDJ_OL7OU7b33mL8wmop9mgiZvWLzgnUef_zEXCNZkkxKiQ8xuQpRyz9QbW0FA0eB2av9rw"
+          alt="The Enigma Chamber - Room 2"
+          style="width:100%; height:160px; object-fit:cover; display:block;"
+        />
+      </div>
+
+      <!-- Title -->
+      <p class="text-win-xl" style="margin:0 0 4px 0;">The Enigma Chamber — Advanced</p>
+      <p class="text-win" style="margin:0 0 8px 0; line-height:1.5; color:#444;">
+        Welcome, adventurer. Secrets are etched in stone and riddles guard the path. Solve them all to unlock the final chapter.
+      </p>
+
+      <div class="win-separator"></div>
+
+      <!-- Riddles groupbox -->
+      <div class="win-groupbox" style="margin-bottom:10px;">
+        <span class="win-groupbox-label">The Riddles</span>
+        <table style="border-collapse:collapse; width:100%; margin-top:4px;">
+          <tr>
+            <td style="padding:4px 6px; width:24px; vertical-align:top;">
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" fill="#0a246a"/><text x="8" y="12" text-anchor="middle" font-size="10" fill="#fff" font-family="Tahoma">1</text></svg>
+            </td>
+            <td class="text-win" style="padding:4px 6px; line-height:1.5;">
+              I have cities, but no houses; forests, but no trees; and water, but no fish. What am I?
+            </td>
+          </tr>
+          <tr style="background: rgba(0,0,0,0.04);">
+            <td style="padding:4px 6px; vertical-align:top;">
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" fill="#0a246a"/><text x="8" y="12" text-anchor="middle" font-size="10" fill="#fff" font-family="Tahoma">2</text></svg>
+            </td>
+            <td class="text-win" style="padding:4px 6px; line-height:1.5;">
+              What has an eye, but cannot see?
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:4px 6px; vertical-align:top;">
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" fill="#0a246a"/><text x="8" y="12" text-anchor="middle" font-size="10" fill="#fff" font-family="Tahoma">3</text></svg>
+            </td>
+            <td class="text-win" style="padding:4px 6px; line-height:1.5;">
+              What is always in front of you but can&apos;t be seen?
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Answer form groupbox -->
+      <div class="win-groupbox" style="margin-bottom:14px;">
+        <span class="win-groupbox-label">Your Solutions</span>
+        <div style="padding:6px 0 4px 0;">
+          <label class="win-label" for="solution" style="display:block; margin-bottom:4px;">
+            Enter comma-separated answers (e.g. map, needle, future):
+          </label>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <input
+              id="solution"
+              class="win-input"
+              type="text"
+              placeholder="answer1, answer2, answer3"
+              style="flex:1;"
+            />
+            <button id="submitSolutions" class="win-btn win-btn-primary win-btn-default" style="min-width:110px; height:24px;">
+              🔓 Submit
+            </button>
+          </div>
+          <p id="feedback-msg" class="text-win-sm" style="margin:4px 0 0 0; display:none;"></p>
+        </div>
+      </div>
+
+      <!-- Progress indicator -->
+      <div class="win-panel-inset" style="margin-bottom:4px;">
+        <p class="text-win-sm" style="margin:0 0 4px 0;">Room Progress:</p>
+        <div class="win-progress">
+          <div class="win-progress-bar" style="width:50%;"></div>
+        </div>
+        <p class="text-win-sm" style="margin:4px 0 0 0; color:#444;">Room 2 of 2</p>
+      </div>
+
+    </div><!-- /win-client -->
+
+    <!-- Status bar -->
+    <div class="win-statusbar">
+      <div class="win-statusbar-panel">Room 2 — Active</div>
+      <div class="win-statusbar-panel" style="flex:0 0 auto; min-width:100px; text-align:center;">0 attempts</div>
+    </div>
+
+  </div><!-- /win-window -->
+
+  <!-- Taskbar -->
+  <div class="win-taskbar">
+    <button class="win-start-btn">
+      <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="6" height="6" fill="#ff0000"/>
+        <rect x="8" y="0" width="6" height="6" fill="#00ff00"/>
+        <rect x="0" y="8" width="6" height="6" fill="#0000ff"/>
+        <rect x="8" y="8" width="6" height="6" fill="#ffff00"/>
+      </svg>
+      <strong>Start</strong>
+    </button>
+    <div style="background: var(--win-dark); width:1px; height:22px; margin:0 2px;"></div>
+    <div class="win-taskbar-item" style="border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);">
+      🔐 Room 2: Enigma Chamber
+    </div>
+    <div class="win-taskbar-tray">
+      <span id="taskbar-clock" class="text-win-sm">00:00</span>
+    </div>
+  </div>
+
+  <script>
+    let attempts = 0;
+
+    function checkSolutions() {
+      const input = document.getElementById("solution").value.trim().toLowerCase();
+      const userAnswers = input.split(",").map(a => a.trim());
+      const correctAnswers = ["map", "needle", "future"];
+      const feedback = document.getElementById("feedback-msg");
+      attempts++;
+      document.querySelector(".win-statusbar-panel:last-child").textContent = attempts + " attempt" + (attempts !== 1 ? "s" : "");
+
+      if (JSON.stringify(userAnswers) === JSON.stringify(correctAnswers)) {
+        try { localStorage.setItem("room2Completed", "true"); } catch(e) {}
+        feedback.style.display = "block";
+        feedback.style.color = "#006400";
+        feedback.textContent = "✓ Excellent! You solved all riddles! Proceeding to victory...";
+        setTimeout(() => { window.location.href = "successpage.html"; }, 1500);
+      } else {
+        feedback.style.display = "block";
+        feedback.style.color = "#cc0000";
+        feedback.textContent = "✗ Some answers are incorrect. Please try again.";
+        setTimeout(() => { feedback.style.display = "none"; }, 2500);
+      }
+    }
+
+    document.getElementById("submitSolutions").addEventListener("click", (e) => {
+      e.preventDefault();
+      checkSolutions();
+    });
+    document.getElementById("solution").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") checkSolutions();
+    });
+
+    function updateClock() {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2,"0");
+      const m = now.getMinutes().toString().padStart(2,"0");
+      document.getElementById("taskbar-clock").textContent = h + ":" + m;
+    }
+    updateClock();
+    setInterval(updateClock, 10000);
+  </script>
 
 </body>
 </html>

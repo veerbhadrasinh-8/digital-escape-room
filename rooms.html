@@ -1,80 +1,186 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rooms - Escape Quest</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles.css">
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            primary: "#0a0a5c",
-            "background-light": "#f6f6f8",
-            "background-dark": "#111121",
-          },
-          fontFamily: { display: ["Space Grotesk"] },
-        },
-      },
-    };
-  </script>
+  <style>
+    body {
+      background-color: #008080;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px 8px 36px 8px;
+    }
+  </style>
 </head>
-<body class="font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100">
-  <div class="min-h-screen flex flex-col items-center p-6">
-    <header class="w-full max-w-6xl">
-      <nav class="flex items-center justify-between px-4 py-3">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary text-3xl">key</span>
-          <h1 class="text-lg font-bold">Escape Quest — Rooms</h1>
-        </div>
-        <div class="flex items-center gap-4">
-          <a class="text-sm hover:text-primary" href="startpage.html">Home</a>
-          <a class="text-sm font-medium text-primary" href="rooms.html">Rooms</a>
-        </div>
-      </nav>
-    </header>
+<body>
 
-    <main class="w-full max-w-4xl mt-8">
-      <h2 class="text-2xl font-bold text-center mb-6">Choose a Room</h2>
+  <!-- Main application window -->
+  <div class="win-window" style="width: 480px; max-width: 98vw;">
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <!-- Room 1 -->
-        <div id="box1" class="cursor-pointer rounded-xl p-6 bg-white/80 dark:bg-background-dark/60 border border-gray-200/30 shadow hover:scale-102 transition transform" role="button" tabindex="0">
-          <h3 class="text-xl font-bold">Box 1 — Room 1</h3>
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Begin your journey here. Click to enter Room 1.</p>
-          <div class="mt-4">
-            <button class="enter1 w-full bg-primary text-white py-2 rounded-md font-bold">Enter Room 1</button>
+    <!-- Title bar -->
+    <div class="win-titlebar">
+      <div class="win-titlebar-title">
+        <div class="win-titlebar-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="3" width="14" height="10" fill="#f0c040" stroke="#a07000" stroke-width="1"/>
+            <rect x="1" y="3" width="5" height="2" fill="#f0c040" stroke="#a07000" stroke-width="1"/>
+          </svg>
+        </div>
+        Escape Quest — Room Selection
+      </div>
+      <div class="win-titlebar-controls">
+        <button class="win-ctrl-btn" title="Minimize">_</button>
+        <button class="win-ctrl-btn" title="Maximize">□</button>
+        <button class="win-ctrl-btn" title="Close" style="font-family:Arial; font-weight:bold; font-size:10px;">✕</button>
+      </div>
+    </div>
+
+    <!-- Menu bar -->
+    <div class="win-menubar">
+      <a href="startpage.html">File</a>
+      <a href="#">Game</a>
+      <a href="rooms.html" style="background: var(--win-select); color: var(--win-select-text);">Rooms</a>
+      <a href="#">Leaderboard</a>
+      <a href="#">Help</a>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="win-toolbar">
+      <button class="win-toolbar-btn" onclick="window.location.href='startpage.html'">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8h2v6h4v-4h2v4h4V8h2L8 1z" fill="#0a246a"/></svg>
+        Home
+      </button>
+      <div class="win-toolbar-sep"></div>
+      <span class="text-win-sm" style="margin-left:4px; color:#666;">Select a room to begin</span>
+    </div>
+
+    <!-- Client area -->
+    <div class="win-client" style="padding: 12px;">
+
+      <p class="text-win-lg" style="margin:0 0 8px 0;">Choose a Room</p>
+      <div class="win-separator" style="margin-bottom:10px;"></div>
+
+      <!-- Room 1 -->
+      <div class="win-groupbox" style="margin-bottom:12px;">
+        <span class="win-groupbox-label">Box 1 — Room 1</span>
+        <div style="display:flex; align-items:center; gap:10px; padding:6px 0;">
+          <!-- Room icon -->
+          <div style="width:40px; height:40px; flex-shrink:0; display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" fill="#ece9d8"/>
+              <rect x="4" y="4" width="32" height="32" fill="#a6caf0" stroke="#0a246a" stroke-width="2"/>
+              <text x="20" y="26" text-anchor="middle" font-size="20" fill="#0a246a">🔍</text>
+            </svg>
           </div>
-        </div>
-
-        <!-- Room 2 (locked until room1Completed) -->
-        <div id="box2" class="rounded-xl p-6 bg-white/80 dark:bg-background-dark/60 border border-gray-200/30 shadow relative">
-          <h3 class="text-xl font-bold">Box 2 — Room 2</h3>
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Locked. Complete Room 1 to unlock.</p>
-          <div class="mt-4">
-            <button id="enter2" class="w-full py-2 rounded-md font-bold">Enter Room 2</button>
-          </div>
-          <div id="lockedOverlay" class="absolute inset-0 bg-white/60 dark:bg-black/60 flex items-center justify-center rounded-xl" style="display:none;">
-            <div class="text-center">
-              <p class="font-semibold text-gray-700 dark:text-gray-200">Locked</p>
-              <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Complete Room 1 to unlock this room.</p>
+          <div style="flex:1;">
+            <p class="text-win" style="font-weight:bold; margin:0 0 2px 0;">Room 1 — The Enigma Chamber</p>
+            <p class="text-win-sm" style="color:#444; margin:0 0 8px 0; line-height:1.4;">Begin your journey here. Solve the riddle to proceed to Room 2.</p>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <!-- Unlocked badge -->
+              <div class="win-panel-inset" style="padding:1px 6px; display:inline-flex; align-items:center; gap:4px; font-size:10px; color:#006400;">
+                <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="5" fill="#90EE90" stroke="#006400"/><text x="6" y="9" text-anchor="middle" font-size="8" fill="#006400">✓</text></svg>
+                Unlocked
+              </div>
+              <button class="enter1 win-btn win-btn-primary win-btn-default" style="height:22px; min-width:100px;">Enter Room 1</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-        Tip: You can also progress by solving the rooms directly from the map flow.
+      <!-- Room 2 -->
+      <div class="win-groupbox" style="margin-bottom:12px; position:relative;">
+        <span class="win-groupbox-label">Box 2 — Room 2</span>
+        <div style="display:flex; align-items:center; gap:10px; padding:6px 0;">
+          <!-- Room icon -->
+          <div style="width:40px; height:40px; flex-shrink:0; display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" fill="#ece9d8"/>
+              <rect x="4" y="4" width="32" height="32" fill="#d4d0c8" stroke="#808080" stroke-width="2"/>
+              <text x="20" y="26" text-anchor="middle" font-size="20" fill="#808080">🔒</text>
+            </svg>
+          </div>
+          <div style="flex:1;" id="room2-content">
+            <p class="text-win" style="font-weight:bold; margin:0 0 2px 0;">Room 2 — Advanced Chamber</p>
+            <p class="text-win-sm" id="room2-desc" style="color:#444; margin:0 0 8px 0; line-height:1.4;">Locked. Complete Room 1 to unlock this room.</p>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <!-- Locked badge -->
+              <div id="lock-badge" class="win-panel-inset" style="padding:1px 6px; display:inline-flex; align-items:center; gap:4px; font-size:10px; color:#808080;">
+                <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><circle cx="6" cy="6" r="5" fill="#d4d0c8" stroke="#808080"/><text x="6" y="9" text-anchor="middle" font-size="8" fill="#808080">🔒</text></svg>
+                <span id="lock-label">Locked</span>
+              </div>
+              <button id="enter2" class="win-btn win-btn-disabled" style="height:22px; min-width:100px; color:var(--win-disabled); text-shadow:1px 1px 0 var(--win-light);">Enter Room 2</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Locked overlay -->
+        <div id="lockedOverlay" style="
+          position:absolute; inset:0;
+          background: rgba(212,208,200,0.7);
+          display:none;
+          align-items:center; justify-content:center;
+          border: 2px solid var(--win-dark);
+        ">
+          <div class="win-dialog" style="text-align:center; padding:12px;">
+            <div class="win-titlebar" style="margin-bottom:8px;">
+              <span class="win-titlebar-title">Access Denied</span>
+            </div>
+            <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:6px;">
+              <circle cx="16" cy="16" r="14" fill="#ff0000" stroke="#800000" stroke-width="2"/>
+              <text x="16" y="22" text-anchor="middle" font-size="18" fill="#fff">✕</text>
+            </svg>
+            <p class="text-win" style="margin:0 0 4px 0; font-weight:bold;">Room Locked</p>
+            <p class="text-win-sm" style="color:#444; margin:0 0 8px 0;">Complete Room 1 first to unlock this room.</p>
+            <button onclick="document.getElementById('lockedOverlay').style.display='none'" class="win-btn" style="height:22px;">OK</button>
+          </div>
+        </div>
       </div>
-    </main>
+
+      <!-- Info panel -->
+      <div class="win-panel-inset" style="display:flex; align-items:center; gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="7" fill="#0a246a" stroke="#a6caf0" stroke-width="1"/>
+          <text x="8" y="12" text-anchor="middle" font-size="11" fill="#fff" font-family="Tahoma">i</text>
+        </svg>
+        <span class="text-win-sm">Tip: You can also progress by solving the rooms directly from the map flow.</span>
+      </div>
+
+    </div><!-- /win-client -->
+
+    <!-- Status bar -->
+    <div class="win-statusbar">
+      <div class="win-statusbar-panel" id="status-text">1 of 2 rooms unlocked</div>
+      <div class="win-statusbar-panel" style="flex:0 0 auto; min-width:80px; text-align:center;">Escape Quest</div>
+    </div>
+
+  </div><!-- /win-window -->
+
+  <!-- Taskbar -->
+  <div class="win-taskbar">
+    <button class="win-start-btn">
+      <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="6" height="6" fill="#ff0000"/>
+        <rect x="8" y="0" width="6" height="6" fill="#00ff00"/>
+        <rect x="0" y="8" width="6" height="6" fill="#0000ff"/>
+        <rect x="8" y="8" width="6" height="6" fill="#ffff00"/>
+      </svg>
+      <strong>Start</strong>
+    </button>
+    <div style="background: var(--win-dark); width:1px; height:22px; margin:0 2px;"></div>
+    <div class="win-taskbar-item" style="border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);">
+      📁 Room Selection
+    </div>
+    <div class="win-taskbar-tray">
+      <span id="taskbar-clock" class="text-win-sm">00:00</span>
+    </div>
   </div>
 
   <script>
-    // Hook up buttons
     document.querySelector(".enter1").addEventListener("click", () => {
       window.location.href = "firstround.html";
     });
@@ -85,26 +191,33 @@
     function updateLockState() {
       const room1Done = localStorage.getItem("room1Completed") === "true";
       if (room1Done) {
-        // unlocked
         lockedOverlay.style.display = "none";
-        enter2.classList.remove("bg-gray-400");
-        enter2.classList.add("bg-primary", "text-white");
-        enter2.addEventListener("click", () => {
-          window.location.href = "secondround.html";
-        });
+        enter2.classList.remove("win-btn-disabled");
+        enter2.classList.add("win-btn-primary");
+        enter2.style.color = "";
+        enter2.style.textShadow = "";
+        document.getElementById("lock-badge").style.color = "#006400";
+        document.getElementById("lock-label").textContent = "Unlocked";
+        document.getElementById("room2-desc").textContent = "Unlocked! Click to enter Room 2 and face new challenges.";
+        document.getElementById("status-text").textContent = "2 of 2 rooms unlocked";
+        enter2.onclick = () => { window.location.href = "secondround.html"; };
       } else {
-        // locked
-        lockedOverlay.style.display = "flex";
-        enter2.classList.remove("bg-primary", "text-white");
-        enter2.classList.add("bg-gray-400", "text-white");
-        enter2.addEventListener("click", () => {
-          alert("🔒 Room 2 is locked. Complete Room 1 first!");
-        });
+        enter2.onclick = () => {
+          lockedOverlay.style.display = "flex";
+        };
       }
     }
 
-    // initialize
     updateLockState();
+
+    function updateClock() {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2,"0");
+      const m = now.getMinutes().toString().padStart(2,"0");
+      document.getElementById("taskbar-clock").textContent = h + ":" + m;
+    }
+    updateClock();
+    setInterval(updateClock, 10000);
   </script>
 </body>
 </html>

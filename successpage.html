@@ -1,69 +1,179 @@
 <!DOCTYPE html>
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Stitch Design</title>
-<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#f4d125",
-              "background-light": "#f8f8f5",
-              "background-dark": "#221f10",
-            },
-            fontFamily: {
-              display: ["Space Grotesk"],
-            },
-            borderRadius: {
-              DEFAULT: "0.5rem",
-              lg: "1rem",
-              xl: "1.5rem",
-              full: "9999px",
-            },
-          },
-        },
-      };
-    </script>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Congratulations! - Escape Quest</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #008080;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 8px 36px 8px;
+    }
+  </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
-<div class="flex min-h-screen items-center justify-center p-4">
-<div class="w-full max-w-2xl rounded-xl bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm p-8 text-center shadow-2xl shadow-primary/20">
-<div class="mb-6">
-<span aria-label="Trophy" class="text-6xl" role="img">🏆</span>
-</div>
-<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">Congratulations! You've Escaped!</h1>
-<p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
-          You've successfully navigated all the challenges and unlocked the final door. Your wit and determination have led you to victory. Well done!
-        </p>
-<div class="aspect-w-16 aspect-h-9 mb-8 overflow-hidden rounded-lg">
-<img alt="A celebratory image showing an open door with light streaming out." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBitwpeYybRWqGW_CWWWaxSRq7wqZdq4CDyeYoaPVcgTUsLI3V9akcW2Bf5GOoa1NxbqA7PX73_P0tIdeeA0gS185tl46nLHsnv5HPChgIg07nxO8pZ7dTE32_GfyFHbOI1HUfuu1uITc9u72-zl7GNhzZxrsyjYfyt-e53W3A1HpcehW2NMq_bJowOHZ2PZXojQ3q60PNb9bGo-3KBoyyODOhEiFr6oljEdho4eOgOOtINCHcwII-5LelvDkrF7BYIyaiImiRWZw"/>
-</div>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button id="playAgainBtn" class="w-full sm:w-auto flex-1 bg-primary text-background-dark font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors duration-300">
-            Play Again
-</button>
-</div>
-</div>
-</div>
+<body>
 
-<script>
-  // When Play Again is clicked: clear progress and go to startup page
-  document.getElementById("playAgainBtn").addEventListener("click", () => {
-    // Clear room progress so user can replay from start
-    localStorage.removeItem("room1Completed");
-    localStorage.removeItem("room2Completed");
-    // Redirect to your start page (matches filename you shared)
-    window.location.href = "startpage.html";
-  });
-</script>
+  <!-- Success dialog window -->
+  <div class="win-window" style="width: 440px; max-width: 98vw;">
+
+    <!-- Title bar -->
+    <div class="win-titlebar">
+      <div class="win-titlebar-title">
+        <div class="win-titlebar-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="8" r="6" fill="#f0c040" stroke="#a07000" stroke-width="1"/>
+            <text x="8" y="12" text-anchor="middle" font-size="10" fill="#000" font-family="Tahoma">★</text>
+          </svg>
+        </div>
+        Escape Quest — Mission Complete!
+      </div>
+      <div class="win-titlebar-controls">
+        <button class="win-ctrl-btn" title="Minimize">_</button>
+        <button class="win-ctrl-btn" title="Maximize">□</button>
+        <button class="win-ctrl-btn" title="Close" style="font-family:Arial; font-weight:bold; font-size:10px;">✕</button>
+      </div>
+    </div>
+
+    <!-- Menu bar -->
+    <div class="win-menubar">
+      <a href="startpage.html">File</a>
+      <a href="#">Game</a>
+      <a href="rooms.html">Rooms</a>
+      <a href="#">Help</a>
+    </div>
+
+    <!-- Client area -->
+    <div class="win-client" style="padding:16px; text-align:center;">
+
+      <!-- Big trophy icon area -->
+      <div style="margin-bottom:12px;">
+        <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <!-- Trophy body -->
+          <rect x="20" y="12" width="24" height="22" rx="12" fill="#f0c040" stroke="#a07000" stroke-width="2"/>
+          <!-- Trophy handles -->
+          <path d="M20 20 C10 20 10 30 20 30" stroke="#a07000" stroke-width="2" fill="none"/>
+          <path d="M44 20 C54 20 54 30 44 30" stroke="#a07000" stroke-width="2" fill="none"/>
+          <!-- Trophy stem -->
+          <rect x="28" y="34" width="8" height="10" fill="#a07000"/>
+          <!-- Trophy base -->
+          <rect x="18" y="44" width="28" height="6" rx="2" fill="#f0c040" stroke="#a07000" stroke-width="2"/>
+          <!-- Star on trophy -->
+          <text x="32" y="28" text-anchor="middle" font-size="14" fill="#fff">★</text>
+        </svg>
+      </div>
+
+      <!-- Congratulations message dialog -->
+      <div style="margin-bottom:12px;">
+        <p class="text-win-xl" style="margin:0 0 6px 0;">Congratulations!</p>
+        <p class="text-win-lg" style="margin:0 0 8px 0; color:#0a246a;">You&apos;ve Escaped!</p>
+      </div>
+
+      <div class="win-separator" style="margin-bottom:12px;"></div>
+
+      <div class="win-panel-inset" style="margin-bottom:14px; text-align:left;">
+        <p class="text-win" style="line-height:1.6; margin:0;">
+          You&apos;ve successfully navigated all the challenges and unlocked the final door.
+          Your wit and determination have led you to victory.
+        </p>
+        <p class="text-win" style="line-height:1.6; margin:6px 0 0 0;">
+          <strong>Well done, adventurer!</strong>
+        </p>
+      </div>
+
+      <!-- Celebration image -->
+      <div class="win-panel-inset" style="padding:0; margin-bottom:14px; overflow:hidden; height:140px;">
+        <img
+          alt="A celebratory image showing an open door with light streaming out."
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBitwpeYybRWqGW_CWWWaxSRq7wqZdq4CDyeYoaPVcgTUsLI3V9akcW2Bf5GOoa1NxbqA7PX73_P0tIdeeA0gS185tl46nLHsnv5HPChgIg07nxO8pZ7dTE32_GfyFHbOI1HUfuu1uITc9u72-zl7GNhzZxrsyjYfyt-e53W3A1HpcehW2NMq_bJowOHZ2PZXojQ3q60PNb9bGo-3KBoyyODOhEiFr6oljEdho4eOgOOtINCHcwII-5LelvDkrF7BYIyaiImiRWZw"
+          style="width:100%; height:140px; object-fit:cover; display:block;"
+        />
+      </div>
+
+      <!-- Progress: all complete -->
+      <div class="win-groupbox" style="margin-bottom:14px; text-align:left;">
+        <span class="win-groupbox-label">Completion Status</span>
+        <div style="padding:6px 0;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" fill="#90EE90" stroke="#006400"/><text x="8" y="11.5" text-anchor="middle" font-size="9" fill="#006400" font-weight="bold">✓</text></svg>
+            <span class="text-win">Room 1 — The Enigma Chamber</span>
+            <span class="text-win-sm" style="color:#006400; margin-left:auto;">COMPLETE</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="7" fill="#90EE90" stroke="#006400"/><text x="8" y="11.5" text-anchor="middle" font-size="9" fill="#006400" font-weight="bold">✓</text></svg>
+            <span class="text-win">Room 2 — Advanced Chamber</span>
+            <span class="text-win-sm" style="color:#006400; margin-left:auto;">COMPLETE</span>
+          </div>
+        </div>
+        <div style="margin-top:6px;">
+          <div class="win-progress">
+            <div class="win-progress-bar" style="width:100%;"></div>
+          </div>
+          <p class="text-win-sm" style="margin:3px 0 0 0;">2 / 2 rooms completed</p>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div style="display:flex; justify-content:center; gap:8px;">
+        <button id="playAgainBtn" class="win-btn win-btn-primary win-btn-default" style="height:26px; min-width:110px; font-size:12px;">
+          ▶ Play Again
+        </button>
+        <button class="win-btn" onclick="window.location.href='rooms.html'" style="height:26px;">
+          View Rooms
+        </button>
+      </div>
+
+    </div><!-- /win-client -->
+
+    <!-- Status bar -->
+    <div class="win-statusbar">
+      <div class="win-statusbar-panel">Mission Complete — All rooms solved!</div>
+      <div class="win-statusbar-panel" style="flex:0 0 auto; min-width:60px; text-align:center;">100%</div>
+    </div>
+
+  </div><!-- /win-window -->
+
+  <!-- Taskbar -->
+  <div class="win-taskbar">
+    <button class="win-start-btn">
+      <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="6" height="6" fill="#ff0000"/>
+        <rect x="8" y="0" width="6" height="6" fill="#00ff00"/>
+        <rect x="0" y="8" width="6" height="6" fill="#0000ff"/>
+        <rect x="8" y="8" width="6" height="6" fill="#ffff00"/>
+      </svg>
+      <strong>Start</strong>
+    </button>
+    <div style="background: var(--win-dark); width:1px; height:22px; margin:0 2px;"></div>
+    <div class="win-taskbar-item" style="border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);">
+      🏆 Mission Complete
+    </div>
+    <div class="win-taskbar-tray">
+      <span id="taskbar-clock" class="text-win-sm">00:00</span>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("playAgainBtn").addEventListener("click", () => {
+      localStorage.removeItem("room1Completed");
+      localStorage.removeItem("room2Completed");
+      window.location.href = "startpage.html";
+    });
+
+    function updateClock() {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2,"0");
+      const m = now.getMinutes().toString().padStart(2,"0");
+      document.getElementById("taskbar-clock").textContent = h + ":" + m;
+    }
+    updateClock();
+    setInterval(updateClock, 10000);
+  </script>
 
 </body>
 </html>

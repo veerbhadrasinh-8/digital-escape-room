@@ -1,121 +1,210 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Escape Quest - The Enigma Chamber</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link rel="stylesheet" href="styles.css">
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "primary": "#0a0a5c",
-          "background-light": "#f6f6f8",
-          "background-dark": "#111121",
-        },
-        fontFamily: {
-          "display": ["Space Grotesk"]
-        },
-        borderRadius: {
-          "DEFAULT": "0.25rem",
-          "lg": "0.5rem",
-          "xl": "0.75rem",
-          "full": "9999px"
-        },
-      },
-    },
-  }
-</script>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Escape Quest - Room 1: The Enigma Chamber</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #008080;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px 8px 36px 8px;
+    }
+  </style>
 </head>
 
-<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
-<div class="flex flex-col min-h-screen">
+<body>
 
-<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-800/50">
-  <nav class="container mx-auto px-6 py-3 flex items-center justify-between">
-    <div class="flex items-center gap-4">
-      <span class="material-symbols-outlined text-primary text-3xl">key</span>
-      <h1 class="text-xl font-bold text-gray-900 dark:text-white">Escape Quest</h1>
+  <!-- Main application window -->
+  <div class="win-window" style="width: 560px; max-width: 98vw;">
+
+    <!-- Title bar -->
+    <div class="win-titlebar">
+      <div class="win-titlebar-title">
+        <div class="win-titlebar-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="8" r="6" fill="#0a246a" stroke="#a6caf0" stroke-width="1"/>
+            <text x="8" y="12" text-anchor="middle" font-size="10" fill="#fff" font-family="Tahoma">?</text>
+          </svg>
+        </div>
+        Escape Quest — Room 1: The Enigma Chamber
+      </div>
+      <div class="win-titlebar-controls">
+        <button class="win-ctrl-btn" title="Minimize">_</button>
+        <button class="win-ctrl-btn" title="Maximize">□</button>
+        <button class="win-ctrl-btn" title="Close" style="font-family:Arial; font-weight:bold; font-size:10px;">✕</button>
+      </div>
     </div>
-    <div class="hidden md:flex items-center gap-8">
-      <!-- Home and Rooms now point to the startup page and rooms page -->
-      <a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="startpage.html">Home</a>
-      <a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="rooms.html">Rooms</a>
-      <a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">Leaderboard</a>
-      <a class="text-sm font-medium hover:text-primary dark:hover:text-primary transition-colors" href="#">About</a>
+
+    <!-- Menu bar -->
+    <div class="win-menubar">
+      <a href="startpage.html">File</a>
+      <a href="#">Game</a>
+      <a href="rooms.html">Rooms</a>
+      <a href="#">Leaderboard</a>
+      <a href="#">Help</a>
     </div>
-    <div class="flex items-center gap-4">
-      <button class="p-2 rounded-full hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
-        <span class="material-symbols-outlined">help</span>
+
+    <!-- Toolbar -->
+    <div class="win-toolbar">
+      <button class="win-toolbar-btn" onclick="window.location.href='startpage.html'">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8h2v6h4v-4h2v4h4V8h2L8 1z" fill="#0a246a"/></svg>
+        Home
       </button>
-      <div class="w-10 h-10 rounded-full bg-cover bg-center" 
-           style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9e85z0utmauHKq8Qh9NNsshGhaGfgylqGWUxT8cVsk28n8uqJ-ShkOsAVfcVexLB5TC3GvUIDCuXr08V9SzX2xBWwRSP-dfzX0eo40bNa8yDnZXKhqZXwGw1JIp4dF2d6XUcU2tLPJjgjQg3JhTmE-YwygEiqJOvMPt2BagqSRU1QHEoaZe-S0Tw4q5t8LK5dn0luo7V305inl8_rxpJmWS3t6P71zj815w4RD0XWvFxZSGzhYnC3ctkqnMKeUmdk10n-ClFxJA");'>
+      <div class="win-toolbar-sep"></div>
+      <button class="win-toolbar-btn" onclick="window.location.href='rooms.html'">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="6" height="6" fill="#f0c040" stroke="#a07000"/><rect x="9" y="1" width="6" height="6" fill="#a6caf0" stroke="#0a246a"/><rect x="1" y="9" width="6" height="6" fill="#90EE90" stroke="#006400"/><rect x="9" y="9" width="6" height="6" fill="#ffb0b0" stroke="#a00000"/></svg>
+        Rooms
+      </button>
+      <div class="win-toolbar-sep"></div>
+      <span class="text-win-sm" style="margin-left:4px; color:#666;">Room 1 of 2</span>
+    </div>
+
+    <!-- Client area -->
+    <div class="win-client" style="padding: 12px;">
+
+      <!-- Hero image -->
+      <div class="win-panel-inset" style="padding:0; margin-bottom:10px; overflow:hidden; height:180px;">
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu3vihEU-li5RtT8UD7lbGHlNL2OZaHdFEJRvZVmMuBhHrEzj5t2tCQ25ZMmQ7xKffNsy5ijjF4PxVPBFeMdEZ8hn0fQHg7YfkRrtl0Bym8ar0tfZoZAD64HQjjhPmEoeVAQKwGQrOHNoETxMlkWqikj19y43GBYpYxgBl7NtfMEEofJwoKe6hN7yEs96DyPKEhuu4o5DtMUAKyDWY7tGEjwn6OsOuV5pTB3FcvKl54FAnOOxoFyl2s3DtX1d5oxJ-FHYV7Xon-Q"
+          alt="The Enigma Chamber"
+          style="width:100%; height:180px; object-fit:cover; display:block;"
+        />
       </div>
-    </div>
-  </nav>
-</header>
 
-<main class="flex-grow container mx-auto px-6 py-12 flex items-center justify-center">
-  <div class="w-full max-w-4xl flex flex-col items-center">
-    <div class="w-full h-96 rounded-xl bg-hero-firstround shadow-lg">
-      <div class="w-full h-full bg-black/30 rounded-xl"></div>
-    </div>
-
-    <div class="text-center mt-8 px-4">
-      <h2 class="text-4xl font-bold text-gray-900 dark:text-white tracking-tight">The Enigma Chamber</h2>
-      <p class="mt-4 max-w-2xl mx-auto text-gray-600 dark:text-gray-400">
-        Welcome, adventurer! Your journey begins here. Solve the riddle to unlock the door and proceed to the next challenge.
-      </p>
-      <p class="mt-6 text-xl italic font-medium text-gray-700 dark:text-gray-300">
-        "I have cities, but no houses; forests, but no trees; and water, but no fish. What am I?"
-      </p>
-    </div>
-
-    <div class="mt-8 w-full max-w-md">
-      <div class="flex flex-col sm:flex-row items-center gap-4">
-        <label class="sr-only" for="answer-input">Your Answer</label>
-        <input id="answer-input" 
-               class="form-input flex-grow w-full px-4 py-3 rounded-lg bg-white/50 dark:bg-black/20 border-2 border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-primary focus:border-primary transition-all text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400" 
-               placeholder="Enter your answer..." type="text"/>
-        <button id="submit-btn"
-                class="w-full sm:w-auto flex-shrink-0 bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/50 transition-all shadow-lg">
-          Submit
-        </button>
+      <!-- Title -->
+      <div style="margin-bottom:8px;">
+        <p class="text-win-xl" style="margin:0 0 4px 0;">The Enigma Chamber</p>
+        <p class="text-win" style="margin:0; line-height:1.5; color:#444;">
+          Welcome, adventurer! Your journey begins here. Solve the riddle to unlock the door and proceed to the next challenge.
+        </p>
       </div>
+
+      <div class="win-separator"></div>
+
+      <!-- Riddle groupbox -->
+      <div class="win-groupbox" style="margin-bottom:10px;">
+        <span class="win-groupbox-label">Riddle</span>
+        <div style="display:flex; gap:8px; align-items:flex-start; padding:4px 0;">
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0; margin-top:2px;">
+            <rect width="32" height="32" fill="#ece9d8"/>
+            <text x="16" y="22" text-anchor="middle" font-size="20" fill="#0a246a">?</text>
+          </svg>
+          <div>
+            <p class="text-win" style="font-style:italic; margin:0; line-height:1.6;">
+              &ldquo;I have cities, but no houses; forests, but no trees; and water, but no fish. What am I?&rdquo;
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Answer form groupbox -->
+      <div class="win-groupbox" style="margin-bottom:14px;">
+        <span class="win-groupbox-label">Your Answer</span>
+        <div style="padding:6px 0 4px 0;">
+          <label class="win-label" for="answer-input" style="display:block; margin-bottom:4px;">Enter your answer:</label>
+          <div style="display:flex; gap:6px; align-items:center;">
+            <input
+              id="answer-input"
+              class="win-input"
+              type="text"
+              placeholder="Type your answer here..."
+              style="flex:1;"
+            />
+            <button id="submit-btn" class="win-btn win-btn-primary win-btn-default" style="min-width:90px; height:24px;">
+              Submit
+            </button>
+          </div>
+          <p id="feedback-msg" class="text-win-sm" style="margin:4px 0 0 0; color:#0a246a; display:none;"></p>
+        </div>
+      </div>
+
+      <!-- Hint section -->
+      <div class="win-panel-inset" style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="7" fill="#f0c040" stroke="#a07000" stroke-width="1"/>
+          <text x="8" y="12" text-anchor="middle" font-size="11" fill="#000" font-family="Tahoma">!</text>
+        </svg>
+        <span class="text-win-sm">Hint: Think about what contains all these things but isn&apos;t real.</span>
+      </div>
+
+    </div><!-- /win-client -->
+
+    <!-- Status bar -->
+    <div class="win-statusbar">
+      <div class="win-statusbar-panel">Room 1 — Active</div>
+      <div class="win-statusbar-panel" style="flex:0 0 auto; min-width:100px; text-align:center;">0 attempts</div>
+    </div>
+
+  </div><!-- /win-window -->
+
+  <!-- Taskbar -->
+  <div class="win-taskbar">
+    <button class="win-start-btn">
+      <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="6" height="6" fill="#ff0000"/>
+        <rect x="8" y="0" width="6" height="6" fill="#00ff00"/>
+        <rect x="0" y="8" width="6" height="6" fill="#0000ff"/>
+        <rect x="8" y="8" width="6" height="6" fill="#ffff00"/>
+      </svg>
+      <strong>Start</strong>
+    </button>
+    <div style="background: var(--win-dark); width:1px; height:22px; margin:0 2px;"></div>
+    <div class="win-taskbar-item" style="border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);">
+      🔍 Room 1: Enigma Chamber
+    </div>
+    <div class="win-taskbar-tray">
+      <span id="taskbar-clock" class="text-win-sm">00:00</span>
     </div>
   </div>
-</main>
-</div>
 
-<!-- ✅ Interaction Script -->
-<script>
-  const correctAnswer = "map";
-  const input = document.getElementById("answer-input");
-  const button = document.getElementById("submit-btn");
+  <script>
+    const correctAnswer = "map";
+    const input = document.getElementById("answer-input");
+    const button = document.getElementById("submit-btn");
+    const feedback = document.getElementById("feedback-msg");
+    let attempts = 0;
 
-  button.addEventListener("click", () => {
-    const userAnswer = input.value.trim().toLowerCase();
-    if (userAnswer === correctAnswer) {
-      // mark room1 completed so Rooms page can unlock room 2
-      try {
-        localStorage.setItem("room1Completed", "true");
-      } catch (e) {
-        console.warn("Could not write to localStorage:", e);
+    function checkAnswer() {
+      const userAnswer = input.value.trim().toLowerCase();
+      attempts++;
+      document.querySelector(".win-statusbar-panel:last-child").textContent = attempts + " attempt" + (attempts !== 1 ? "s" : "");
+
+      if (userAnswer === correctAnswer) {
+        try { localStorage.setItem("room1Completed", "true"); } catch(e) {}
+        feedback.style.display = "block";
+        feedback.style.color = "#006400";
+        feedback.textContent = "✓ Correct! Proceeding to Round 2...";
+        setTimeout(() => { window.location.href = "secondround.html"; }, 1200);
+      } else {
+        feedback.style.display = "block";
+        feedback.style.color = "#cc0000";
+        feedback.textContent = "✗ Incorrect answer. Please try again.";
+        input.style.borderColor = "#cc0000 #ffffff #ffffff #cc0000";
+        setTimeout(() => {
+          input.style.borderColor = "";
+          feedback.style.display = "none";
+        }, 2000);
       }
-      alert("✅ Correct! Proceeding to Round 2...");
-      window.location.href = "secondround.html";
-    } else {
-      alert("❌ Incorrect answer. Try again!");
     }
-  });
-</script>
+
+    button.addEventListener("click", checkAnswer);
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter") checkAnswer(); });
+
+    function updateClock() {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2,"0");
+      const m = now.getMinutes().toString().padStart(2,"0");
+      document.getElementById("taskbar-clock").textContent = h + ":" + m;
+    }
+    updateClock();
+    setInterval(updateClock, 10000);
+  </script>
 
 </body>
 </html>
