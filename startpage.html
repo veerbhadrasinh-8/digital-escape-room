@@ -1,43 +1,127 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Enigma Forest</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <title>The Enigma Forest - Escape Quest</title>
   <link rel="stylesheet" href="styles.css">
-
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
-
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            primary: "#0a0a5c",
-            "background-light": "#f6f6f8",
-            "background-dark": "#111121",
-          },
-          fontFamily: { display: ["Space Grotesk"] },
-        },
-      },
-    };
-  </script>
+  <style>
+    body { background-color: #008080; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-bottom: 34px; }
+  </style>
 </head>
-<body class="font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100">
-  <div class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative overflow-hidden">
-    <div class="absolute inset-0 bg-startup bg-cover bg-center opacity-30"></div>
-    <div class="relative z-10 bg-background-light/80 dark:bg-background-dark/80 p-10 rounded-xl shadow-lg backdrop-blur-md">
-      <h1 class="text-4xl font-bold mb-4">🌲 The Enigma Forest 🌲</h1>
-      <p class="mb-8 max-w-lg">
-        Welcome, adventurer! Embark on a journey through the Enigma Forest,
-        where ancient secrets and challenging puzzles await.
-      </p>
-      <button id="startGame"
-        class="bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 transition-all shadow-lg">
-        Start Game
-      </button>
+<body>
+
+  <!-- Main window -->
+  <div class="win-window" style="width: 420px; max-width: 98vw;">
+
+    <!-- Title bar -->
+    <div class="win-titlebar">
+      <div class="win-titlebar-title">
+        <div class="win-titlebar-icon">
+          <!-- folder / game icon approximation -->
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="4" width="14" height="10" rx="0" fill="#f0c040" stroke="#a07000" stroke-width="1"/>
+            <rect x="1" y="4" width="6" height="2" fill="#f0c040" stroke="#a07000" stroke-width="1"/>
+          </svg>
+        </div>
+        The Enigma Forest
+      </div>
+      <div class="win-titlebar-controls">
+        <button class="win-ctrl-btn" title="Minimize">_</button>
+        <button class="win-ctrl-btn" title="Maximize">□</button>
+        <button class="win-ctrl-btn" title="Close" style="font-family: Arial; font-weight: bold; font-size:10px;">✕</button>
+      </div>
+    </div>
+
+    <!-- Menu bar -->
+    <div class="win-menubar">
+      <a href="#">File</a>
+      <a href="#">Game</a>
+      <a href="#">View</a>
+      <a href="#">Help</a>
+    </div>
+
+    <!-- Client area -->
+    <div class="win-client" style="padding: 16px;">
+
+      <!-- Hero image panel -->
+      <div class="win-panel-inset" style="margin-bottom:12px; padding:0; overflow:hidden; height:160px;">
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7xCRSRau4caRt4UJMsqYC_JjtDvL7GyLN5p2lpREJVqR7klsWFMSYUcNUNbi3-Xh92_qQHK0SQsIR2am3HGCYxp0UzPvS1uiHQCc6bh7q-i-9s74Z_DEmVc4G6IFYVZOZEnQ9JezX5yRvKMjVvqTjVWajTtVqI8GyIxz0pmKE89DUjbqQf5gStmCY8wb50MOIYxx3JOf81-tn_Bg4lfkwjrUklkvGGytJ4PB26-1ryqpUYKVbFFzC1i1BomoJgstH3j6p8i-Zow"
+          alt="A dense mysterious forest"
+          style="width:100%; height:160px; object-fit:cover; display:block;"
+        />
+      </div>
+
+      <!-- Title & description group -->
+      <div class="win-groupbox" style="margin-bottom:12px;">
+        <span class="win-groupbox-label">Welcome</span>
+        <div style="display:flex; gap:10px; align-items:flex-start;">
+          <!-- Big icon -->
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0; margin-top:2px;">
+            <rect x="2" y="2" width="28" height="28" rx="0" fill="#228B22" stroke="#006400" stroke-width="2"/>
+            <text x="16" y="22" text-anchor="middle" font-size="18" fill="#90EE90">🌲</text>
+          </svg>
+          <div>
+            <p class="text-win-lg" style="margin:0 0 6px 0;">The Enigma Forest</p>
+            <p class="text-win" style="line-height:1.5; margin:0;">
+              Welcome, adventurer! Embark on a journey through the Enigma Forest,
+              where ancient secrets and challenging puzzles await. Do you have what
+              it takes to solve the mysteries within?
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info box -->
+      <div class="win-panel-inset" style="margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="7" fill="#0a246a" stroke="#a6caf0" stroke-width="1"/>
+          <text x="8" y="12" text-anchor="middle" font-size="11" fill="#fff" font-family="Tahoma">i</text>
+        </svg>
+        <span class="text-win-sm">Click <strong>Start Game</strong> to begin your quest. Complete all rooms to escape!</span>
+      </div>
+
+      <!-- Buttons row -->
+      <div style="display:flex; justify-content:center; gap:8px;">
+        <button id="startGame" class="win-btn win-btn-primary win-btn-default" style="min-width:120px; height:26px; font-size:12px;">
+          ▶ Start Game
+        </button>
+        <button class="win-btn" style="height:26px;" onclick="window.location.href='rooms.html'">
+          Rooms
+        </button>
+        <button class="win-btn" style="height:26px;" onclick="alert('No help available at this time.')">
+          Help
+        </button>
+      </div>
+
+    </div><!-- /win-client -->
+
+    <!-- Status bar -->
+    <div class="win-statusbar">
+      <div class="win-statusbar-panel">Ready</div>
+      <div class="win-statusbar-panel" style="flex:0 0 auto; min-width:80px; text-align:center;">Escape Quest v2.0</div>
+    </div>
+
+  </div><!-- /win-window -->
+
+  <!-- Taskbar -->
+  <div class="win-taskbar">
+    <button class="win-start-btn">
+      <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="6" height="6" fill="#ff0000"/>
+        <rect x="8" y="0" width="6" height="6" fill="#00ff00"/>
+        <rect x="0" y="8" width="6" height="6" fill="#0000ff"/>
+        <rect x="8" y="8" width="6" height="6" fill="#ffff00"/>
+      </svg>
+      <strong>Start</strong>
+    </button>
+    <div style="background: var(--win-dark); width:1px; height:22px; margin:0 2px;"></div>
+    <div class="win-taskbar-item" style="border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);">
+      🌲 The Enigma Forest
+    </div>
+    <div class="win-taskbar-tray">
+      <span id="taskbar-clock" class="text-win-sm">00:00</span>
     </div>
   </div>
 
@@ -45,6 +129,16 @@
     document.getElementById("startGame").addEventListener("click", () => {
       window.location.href = "firstround.html";
     });
+
+    // Taskbar clock
+    function updateClock() {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2,"0");
+      const m = now.getMinutes().toString().padStart(2,"0");
+      document.getElementById("taskbar-clock").textContent = h + ":" + m;
+    }
+    updateClock();
+    setInterval(updateClock, 10000);
   </script>
 </body>
 </html>
